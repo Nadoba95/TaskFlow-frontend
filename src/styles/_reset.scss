@@ -1,0 +1,52 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+    position: relative;
+    background-color: $background;
+}
+
+main {
+    width: min(1440px, 100%);
+    margin: 0 auto;
+    padding: 0 60px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+@include breakpoint($tablet) {
+    main {
+        padding: 0 28px;
+    }
+}
+
+@include breakpoint($mobile) {
+    main {
+        padding: 0 16px;
+    }
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $black;
+}

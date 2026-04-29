@@ -1,0 +1,79 @@
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 0;
+    background: $background;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid $grey-hover;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brandMark {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background: $accent;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.brandText {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.userName {
+    font-size: 14px;
+    font-weight: 600;
+    color: $blue;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logoutButton {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid $grey-hover;
+    background: $white;
+    color: $black;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $hover-transition;
+
+    &:hover {
+        background: $grey-hover;
+    }
+
+    &:active {
+        background: $grey-pressed;
+    }
+}
+
+@include breakpoint($mobile) {
+    .header {
+        padding: 14px 0;
+    }
+
+    .brandText {
+        font-size: 16px;
+    }
+}

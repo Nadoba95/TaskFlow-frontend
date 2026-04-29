@@ -1,0 +1,35 @@
+// Colors
+$black: #000;
+$white: #fff;
+
+// Slightly cooler neutral background for better contrast
+$background: #f6f7fb;
+
+// Primary brand color (used in header/table/modals/buttons)
+$accent: #2f3a5f;
+$accent-hover: #26304d;
+
+// Neutral UI surfaces/borders
+$grey-hover: #e5e7ef;
+$grey-pressed: #d8dbe6;
+
+// Subtle warm highlight background
+$additional: #fff3e6;
+
+// Links / focus states
+$blue: #2b6eea;
+$blue-hover: #235dc8;
+
+// Status/validation colors
+$red: #d92d20;
+$red-hover: #b42318;
+$yellow: #fdb022;
+$green: #12b76a;
+
+// Breakpoints
+$laptop: 1200px;
+$tablet: 1024px;
+$mobile: 768px;
+
+// Transition
+$hover-transition: all 0.2s ease;

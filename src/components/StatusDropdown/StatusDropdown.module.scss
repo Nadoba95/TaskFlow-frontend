@@ -1,0 +1,106 @@
+@use "@/styles/variables" as *;
+
+.root {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.trigger {
+    width: 100%;
+    min-height: 32px;
+    padding: 6px 34px 6px 10px;
+    border-radius: 10px;
+    border: 1px solid $grey-hover;
+    background-color: $white;
+    color: $black;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        border-color: $accent;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.7;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 6px solid $black;
+        transform: translateY(-35%);
+        opacity: 0.7;
+    }
+}
+
+.menu {
+    z-index: 20;
+    min-width: 150px;
+    background-color: $white;
+    border: 1px solid $grey-hover;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    padding: 6px;
+}
+
+.menuInline {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+}
+
+.menuPortal {
+    position: fixed;
+}
+
+.option {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: $black;
+    text-align: left;
+    padding: 10px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $grey-hover;
+    }
+}
+
+.optionSelected {
+    background-color: $accent !important;
+    color: $white;
+}
+
+.badge {
+    width: 12px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: $grey-hover;
+}
+
+.badge.todo {
+    background-color: $yellow;
+}
+
+.badge.in_progress {
+    background-color: $blue;
+}
+
+.badge.done {
+    background-color: $green;
+}
