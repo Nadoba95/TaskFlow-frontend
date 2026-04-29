@@ -51,7 +51,7 @@ export function StatusDropdown<T extends string = Task["status"]>({
             const rect = el.getBoundingClientRect();
             setMenuPos({
                 left: rect.left,
-                top: rect.bottom + 6,
+                top: rect.bottom + 2,
                 width: rect.width,
             });
         }
@@ -108,68 +108,68 @@ export function StatusDropdown<T extends string = Task["status"]>({
             </button>
 
             {open &&
-                (portal
-                    ? menuPos &&
-                      createPortal(
-                          <div
-                              ref={menuRef}
-                              className={[styles.menu, styles.menuPortal].join(" ")}
-                              id={listboxId}
-                              role="listbox"
-                              style={{ left: menuPos.left, top: menuPos.top, width: menuPos.width }}
-                          >
-                              {options.map((opt) => {
-                                  const isSelected = opt.value === value;
-                                  return (
-                                      <button
-                                          key={opt.value}
-                                          type="button"
-                                          role="option"
-                                          aria-selected={isSelected}
-                                          className={[styles.option, isSelected ? styles.optionSelected : ""]
-                                              .filter(Boolean)
-                                              .join(" ")}
-                                          onClick={() => {
-                                              setOpen(false);
-                                              if (!isSelected) onChange(opt.value);
-                                          }}
-                                      >
-                                          {opt.label}
-                                      </button>
-                                  );
-                              })}
-                          </div>,
-                          document.body,
-                      )
-                    : (
-                          <div
-                              ref={menuRef}
-                              className={[styles.menu, styles.menuInline].join(" ")}
-                              id={listboxId}
-                              role="listbox"
-                          >
-                              {options.map((opt) => {
-                                  const isSelected = opt.value === value;
-                                  return (
-                                      <button
-                                          key={opt.value}
-                                          type="button"
-                                          role="option"
-                                          aria-selected={isSelected}
-                                          className={[styles.option, isSelected ? styles.optionSelected : ""]
-                                              .filter(Boolean)
-                                              .join(" ")}
-                                          onClick={() => {
-                                              setOpen(false);
-                                              if (!isSelected) onChange(opt.value);
-                                          }}
-                                      >
-                                          {opt.label}
-                                      </button>
-                                  );
-                              })}
-                          </div>
-                      ))}
+                (portal ? (
+                    menuPos &&
+                    createPortal(
+                        <div
+                            ref={menuRef}
+                            className={[styles.menu, styles.menuPortal].join(" ")}
+                            id={listboxId}
+                            role="listbox"
+                            style={{ left: menuPos.left, top: menuPos.top, width: menuPos.width }}
+                        >
+                            {options.map((opt) => {
+                                const isSelected = opt.value === value;
+                                return (
+                                    <button
+                                        key={opt.value}
+                                        type="button"
+                                        role="option"
+                                        aria-selected={isSelected}
+                                        className={[styles.option, isSelected ? styles.optionSelected : ""]
+                                            .filter(Boolean)
+                                            .join(" ")}
+                                        onClick={() => {
+                                            setOpen(false);
+                                            if (!isSelected) onChange(opt.value);
+                                        }}
+                                    >
+                                        {opt.label}
+                                    </button>
+                                );
+                            })}
+                        </div>,
+                        document.body
+                    )
+                ) : (
+                    <div
+                        ref={menuRef}
+                        className={[styles.menu, styles.menuInline].join(" ")}
+                        id={listboxId}
+                        role="listbox"
+                    >
+                        {options.map((opt) => {
+                            const isSelected = opt.value === value;
+                            return (
+                                <button
+                                    key={opt.value}
+                                    type="button"
+                                    role="option"
+                                    aria-selected={isSelected}
+                                    className={[styles.option, isSelected ? styles.optionSelected : ""]
+                                        .filter(Boolean)
+                                        .join(" ")}
+                                    onClick={() => {
+                                        setOpen(false);
+                                        if (!isSelected) onChange(opt.value);
+                                    }}
+                                >
+                                    {opt.label}
+                                </button>
+                            );
+                        })}
+                    </div>
+                ))}
 
             {!id && isTaskStatus(value) && <div className={[styles.badge, styles[value]].join(" ")} />}
         </div>

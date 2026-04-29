@@ -69,6 +69,7 @@ function EditTaskModal({ task, onClose, onConfirm }: EditTaskModalProps) {
                             id="status"
                             value={editedTask.status}
                             onChange={(status) => setEditedTask({ ...editedTask, status })}
+                            portal
                         />
                     </div>
                     <div className={styles.actions}>
