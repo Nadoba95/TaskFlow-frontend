@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAccessToken, getRefreshToken, removeTokens, saveTokens } from "../../utils/auth";
+import { getAccessToken, getRefreshToken, getUser, removeTokens, saveTokens, saveUser } from "../../utils/auth";
 import type { User } from "../../types";
 
 interface AuthState {
@@ -10,10 +10,10 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-    accessToken: getAccessToken(),
-    refreshToken: getRefreshToken(),
+    accessToken: getAccessToken() || null,
+    refreshToken: getRefreshToken() || null,
     isAuthenticated: !!getAccessToken(),
-    user: null,
+    user: getUser() || null,
 };
 
 const authSlice = createSlice({
@@ -34,6 +34,7 @@ const authSlice = createSlice({
             state.user = null;
         },
         setUser: (state, action) => {
+            saveUser(action.payload);
             state.user = action.payload;
         },
     },
